@@ -3,16 +3,25 @@ package com.rexbot.bitrtix.bot.ui.signup
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.CommonStatusCodes
+import com.google.android.gms.common.util.concurrent.HandlerExecutor
+import com.google.android.gms.safetynet.SafetyNet
 import com.rexbot.bitrixbot.bot.network.models.SignupResponseModel
+import com.rexbot.bitrtix.bot.BuildConfig
 import com.rexbot.bitrtix.bot.databinding.AcitivtySignupBinding
 import com.rexbot.bitrtix.bot.network.RequestStatus
 import com.rexbot.bitrtix.bot.network.Resource
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
+import com.rexbot.bitrtix.bot.ui.login.LoginActivity
 import com.rexbot.bitrtix.bot.ui.login.LoginViewModel
+import java.util.concurrent.Executor
 
 class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
 
@@ -39,11 +48,42 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
         binding.btnSignUp.setOnClickListener {
             viewModel.signUp(
                 binding.etUsername.text.toString(),
-                binding.etPass.text.toString()
+                binding.etPass.text
             )
         }
-
+        binding.btnBack.setOnClickListener { onBackPressed() }
+        binding.cbRecaptcha.setOnCheckedChangeListener { b, isChecked ->
+            recaptchaOnClick(
+                b,
+                isChecked
+            )
+        }
         viewModel.signUpLiveData.observe(this, signUpObserver)
+    }
+
+
+    private fun recaptchaOnClick(v: CompoundButton, isChecked: Boolean) {
+        if (isChecked) {
+            val exec = HandlerExecutor(mainLooper)
+            SafetyNet.getClient(this).verifyWithRecaptcha(BuildConfig.RECAPTCHA_KEY)
+                .addOnSuccessListener(exec) {
+                    if (it?.tokenResult?.isNotEmpty() == true) {
+                        v.isChecked = true
+                        v.isEnabled = false
+                    }
+                }
+                .addOnFailureListener {
+                    v.isChecked = false
+                    v.isEnabled = true
+                    if (it is ApiException) {
+                        val statusCode = it.statusCode
+                        val str = CommonStatusCodes
+                            .getStatusCodeString(statusCode)
+                        Log.w(LoginActivity.TAG, "Error: $str")
+                        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
     }
 
     private val signUpObserver =
@@ -76,9 +116,10 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
 
         override fun afterTextChanged(s: Editable?) {
             binding.btnSignUp.isEnabled = binding.etPass.text.isNotEmpty() &&
-                    binding.etUsername.text.isNotEmpty() &&
+                    binding.etUsername.text.toString().isNotEmpty() &&
                     binding.etPassAgain.text.isNotEmpty() &&
-                    binding.etPass.text.toString() == binding.etPassAgain.text.toString()
+                    binding.etPass.text == binding.etPassAgain.text &&
+                    binding.cbRecaptcha.isChecked
         }
     }
 

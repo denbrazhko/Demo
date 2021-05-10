@@ -4,6 +4,7 @@ import com.rexbot.bitrixbot.bot.network.models.SignInResponseModel
 import com.rexbot.bitrixbot.bot.network.models.SignupResponseModel
 import com.rexbot.bitrtix.bot.utils.PassCrypt
 import com.rexbot.bitrtix.bot.network.api.UserApi
+import com.rexbot.bitrtix.bot.utils.CryptAES
 
 class UserApiHelper(private val userApi: UserApi) {
 
@@ -11,7 +12,8 @@ class UserApiHelper(private val userApi: UserApi) {
             userName: String,
             password: String
     ): SignInResponseModel {
-        val encodedPass = PassCrypt.encrypt(password, PassCrypt.KEY)
+
+        val encodedPass =   CryptAES().encrypt(password)
         return userApi.signIn(userName, encodedPass)
     }
 
@@ -19,7 +21,7 @@ class UserApiHelper(private val userApi: UserApi) {
             userName: String,
             password: String
     ): SignupResponseModel {
-        val encodedPass = PassCrypt.encrypt(password, PassCrypt.KEY)
+        val encodedPass = CryptAES().encrypt(password)
         return userApi.signUp(userName, encodedPass)
     }
 }
