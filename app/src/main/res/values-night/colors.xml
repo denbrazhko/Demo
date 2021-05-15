@@ -4,19 +4,21 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_hint">#BFBFBF</color>
 
-    <color name="primary">#FFFFFF</color>
-    <color name="primary_dark">#FFFFFF</color>
+
+    <color name="primary">#0F1217</color>
+    <color name="primary_dark">#0F1217</color>
     <color name="color_accent">@color/white</color>
 
     <color name="blue_but_color">#1082FF</color>
     <color name="blue_but_color_pressed">#0077FA</color>
-    
-    <color name="gray_edit_text_color">#E0E0E0</color>
-    <color name="gray_hint_color">#787878</color>
 
-    <color name="base_text_color">@color/black</color>
-    <color name="gray_text_color">@color/black</color>
-    <color name="gray_text_color_pressed">#CC000000</color>
+    <color name="gray_edit_text_color">#212A38</color>
+    <color name="gray_hint_color">#6BFFFFFF</color>
+
+
+    <color name="base_text_color">@color/white</color>
+    <color name="gray_text_color">#B0B0B0</color>
+    <color name="gray_text_color_pressed">#CCB0B0B0</color>
 
     <color name="green_start">#1DDE7D</color>
     <color name="green_end">#72DFC5</color>

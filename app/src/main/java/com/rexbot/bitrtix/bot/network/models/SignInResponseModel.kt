@@ -1,4 +1,4 @@
-package com.rexbot.bitrixbot.bot.network.models
+package com.rexbot.bitrtix.bot.network.models
 
 import com.google.gson.annotations.SerializedName
 

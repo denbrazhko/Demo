@@ -13,15 +13,13 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.util.concurrent.HandlerExecutor
 import com.google.android.gms.safetynet.SafetyNet
-import com.rexbot.bitrixbot.bot.network.models.SignupResponseModel
+import com.rexbot.bitrtix.bot.network.models.SignupResponseModel
 import com.rexbot.bitrtix.bot.BuildConfig
 import com.rexbot.bitrtix.bot.databinding.AcitivtySignupBinding
 import com.rexbot.bitrtix.bot.network.RequestStatus
 import com.rexbot.bitrtix.bot.network.Resource
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
 import com.rexbot.bitrtix.bot.ui.login.LoginActivity
-import com.rexbot.bitrtix.bot.ui.login.LoginViewModel
-import java.util.concurrent.Executor
 
 class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
 
@@ -58,6 +56,8 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
                 isChecked
             )
         }
+
+
         viewModel.signUpLiveData.observe(this, signUpObserver)
     }
 

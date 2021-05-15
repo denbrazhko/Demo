@@ -7,7 +7,7 @@ import androidx.lifecycle.liveData
 import com.rexbot.bitrtix.bot.repositories.PrefsRepository
 import com.rexbot.bitrtix.bot.repositories.UserRepository
 import com.rexbot.bitrtix.bot.network.helpers.UserApiHelper
-import com.rexbot.bitrixbot.bot.network.models.SignInResponseModel
+import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
 import com.rexbot.bitrtix.bot.network.Resource
 import com.rexbot.bitrtix.bot.network.common.RetrofitBuilder
 import kotlinx.coroutines.Dispatchers

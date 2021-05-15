@@ -5,7 +5,6 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -16,14 +15,46 @@
 
     <string name="back">Back</string>
 
-<!--    login-->
+    <!--    login-->
     <string name="enter_username">Enter your username</string>
     <string name="username_hint">Username</string>
     <string name="enter_pass">Enter your password</string>
-    <string name="pass_hint">Password</string>
     <string name="sign_in">SignIn</string>
     <string name="or">or</string>
     <string name="sign_up">SignUp</string>
     <string name="reenter_password">Repeat your password</string>
     <string name="i_m_not_a_robot">I\'m not a robot</string>
+
+    <!--    not translated-->
+    <!--    splash-->
+    <string name="splash_text">Начни торги за пару кликов вместе\n
+        с командой профессионалов</string>
+    <string name="start">Начать</string>
+
+    <!--    login-->
+    <string name="welcome">Добро пожаловать</string>
+    <string name="enter_account">Пожалуйста, войдите в свой аккаунт</string>
+    <string name="email">Электронная почта</string>
+    <string name="email_hint" translatable="false">example@example.com</string>
+    <string name="pass">Пароль</string>
+    <string name="pass_hint">Введите пароль</string>
+    <string name="forgot_pass">Забыли пароль?</string>
+    <string name="enter">Войти</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="reg">Зарегестрируйтесь</string>
+    <string name="open_terminal">Войти в терминал</string>
+    <string name="without_reg">Без регистрации</string>
+
+<!--    reg-->
+    <string name="create_acc">Создайте аккаунт</string>
+    <string name="please_fill_form">Пожалуйста, заполните форму ниже</string>
+    <string name="confirm_pass">Подтверждение пароля</string>
+    <string name="repeat_pass">Повторите пароль</string>
+    <string name="pass_description">Пароль должен содержать не менее 8 символов</string>
+    <string name="create_pass">Придумайте пароль</string>
+    <string name="have_acc">Уже есть аккаунт?</string>
+    <string name="enter_reg">Войдите</string>
+    <string name="register">Зарегестрироваться</string>
+
+
 </resources>

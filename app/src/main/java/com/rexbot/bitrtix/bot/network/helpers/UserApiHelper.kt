@@ -1,8 +1,7 @@
 package com.rexbot.bitrtix.bot.network.helpers
 
-import com.rexbot.bitrixbot.bot.network.models.SignInResponseModel
-import com.rexbot.bitrixbot.bot.network.models.SignupResponseModel
-import com.rexbot.bitrtix.bot.utils.PassCrypt
+import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
+import com.rexbot.bitrtix.bot.network.models.SignupResponseModel
 import com.rexbot.bitrtix.bot.network.api.UserApi
 import com.rexbot.bitrtix.bot.utils.CryptAES
 

@@ -9,14 +9,14 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.util.concurrent.HandlerExecutor
 import com.google.android.gms.safetynet.SafetyNet
-import com.rexbot.bitrixbot.bot.network.models.SignInResponseModel
+import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
 import com.rexbot.bitrtix.bot.BuildConfig
 import com.rexbot.bitrtix.bot.ui.signup.SignUpActivity
 import com.rexbot.bitrtix.bot.databinding.AcitivtyLoginBinding
@@ -31,7 +31,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         init()
         initObservers()
     }
@@ -50,7 +50,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
                 binding.etPass.text
             )
         }
-        binding.btnSignUp.setOnClickListener {
+        binding.tvSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
         binding.cbRecaptcha.setOnCheckedChangeListener { b, isChecked ->

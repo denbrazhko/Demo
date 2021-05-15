@@ -3,6 +3,7 @@ package com.rexbot.bitrtix.bot.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.rexbot.bitrtix.bot.repositories.PrefsRepository
 import com.rexbot.bitrtix.bot.ui.login.LoginActivity
@@ -17,15 +18,17 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate: ")
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         init()
         initObservers()
-        viewModel.startTimer()
+//        viewModel.startTimer()
     }
 
     override fun initObservers() {
         viewModel.timerLiveData.observe(this, {
             launchNextActivity()
         })
+        binding.btnStart.setOnClickListener { launchNextActivity() }
     }
 
     private fun launchNextActivity() {
@@ -33,11 +36,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         Log.i(TAG, "launchNextActivity: ${PrefsRepository(this).getCreds()}")
         val intent: Intent? =
 //            if (PrefsRepository(this).getCreds() == null)
-                Intent(this, LoginActivity::class.java)
+            Intent(this, LoginActivity::class.java)
 //            else
 //                null
         intent ?: return
         startActivity(intent)
+        finish()
     }
 
     override fun init() {

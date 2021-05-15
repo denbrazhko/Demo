@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="green_button_corner">7dp</dimen>
+    <dimen name="blue_button_corner">16dp</dimen>
 </resources>
