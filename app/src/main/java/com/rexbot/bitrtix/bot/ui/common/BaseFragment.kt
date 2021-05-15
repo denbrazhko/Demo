@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
-typealias FragmentInflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
-abstract class BaseFragment<VB : ViewBinding>(
-        private val inflate: FragmentInflate<VB>
-) : Fragment() {
+abstract class BaseFragment<B : ViewBinding> : Fragment() {
 
-    private var _binding: VB? = null
+    private var _binding: B? = null
     val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = inflate.invoke(inflater, container, false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = getViewBinding()
         return binding.root
     }
 
@@ -25,4 +27,7 @@ abstract class BaseFragment<VB : ViewBinding>(
         super.onDestroyView()
         _binding = null
     }
+
+    abstract fun getViewBinding(): B
+
 }

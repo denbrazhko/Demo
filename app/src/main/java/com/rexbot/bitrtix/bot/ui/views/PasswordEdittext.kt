@@ -47,6 +47,7 @@ class PasswordEdittext @JvmOverloads constructor(
         binding.etPass.addTextChangedListener(watcher)
     }
 
+
     private fun changeHidden() {
         if (isHidden) {
             binding.etPass.transformationMethod = null
@@ -68,6 +69,8 @@ class PasswordEdittext @JvmOverloads constructor(
 
         isHidden = !isHidden
     }
+
+    val isValid = text.isNotEmpty() && text.length >= 8
 
 
     companion object {

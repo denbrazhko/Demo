@@ -1,5 +1,6 @@
 package com.rexbot.bitrtix.bot.ui.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -70,6 +71,7 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
                     if (it?.tokenResult?.isNotEmpty() == true) {
                         v.isChecked = true
                         v.isEnabled = false
+                        validateFields()
                     }
                 }
                 .addOnFailureListener {
@@ -103,6 +105,8 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
 
     private fun successSignUp() {
         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 
     private fun errorSignUp(error: String) {
@@ -115,13 +119,18 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
 
         override fun afterTextChanged(s: Editable?) {
-            binding.btnSignUp.isEnabled = binding.etPass.text.isNotEmpty() &&
-                    binding.etUsername.text.toString().isNotEmpty() &&
-                    binding.etPassAgain.text.isNotEmpty() &&
-                    binding.etPass.text == binding.etPassAgain.text &&
-                    binding.cbRecaptcha.isChecked
+            validateFields()
         }
     }
+
+    private fun validateFields() {
+        binding.btnSignUp.isEnabled = binding.etUsername.text.toString().isNotEmpty() &&
+                binding.etPass.isValid &&
+                binding.etPassAgain.isValid &&
+                binding.etPass.text == binding.etPassAgain.text &&
+                binding.cbRecaptcha.isChecked
+    }
+
 
     override fun getViewBinding(): AcitivtySignupBinding =
         AcitivtySignupBinding.inflate(layoutInflater)

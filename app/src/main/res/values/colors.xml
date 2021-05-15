@@ -18,6 +18,10 @@
     <color name="gray_text_color">@color/black</color>
     <color name="gray_text_color_pressed">#CC000000</color>
 
+    <color name="bottom_nav_checked">#469FFF</color>
+    <color name="bottom_nav_unchecked">#3D4553</color>
+    <color name="bottom_nav_background">#9C9595</color>
+
     <color name="green_start">#1DDE7D</color>
     <color name="green_end">#72DFC5</color>
     <color name="green_start_pressed">#149856</color>

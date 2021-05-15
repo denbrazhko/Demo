@@ -23,6 +23,7 @@ import com.rexbot.bitrtix.bot.databinding.AcitivtyLoginBinding
 import com.rexbot.bitrtix.bot.network.RequestStatus
 import com.rexbot.bitrtix.bot.network.Resource
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
+import com.rexbot.bitrtix.bot.ui.main.MainActivity
 
 class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
 
@@ -106,6 +107,8 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
 
     private fun successSignIn() {
         Toast.makeText(this, "success", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun errorSignIn(error: String) {
@@ -123,6 +126,12 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
                     binding.etUsername.text.toString().isNotEmpty() &&
                     binding.cbRecaptcha.isChecked
         }
+    }
+
+    private fun validateFields() {
+        binding.btnSignIn.isEnabled = binding.etPass.isValid &&
+                binding.etUsername.text.toString().isNotEmpty() &&
+                binding.cbRecaptcha.isChecked
     }
 
     override fun getViewBinding(): AcitivtyLoginBinding =

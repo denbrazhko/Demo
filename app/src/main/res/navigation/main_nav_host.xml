@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_host"
+    app:startDestination="@id/terminalFragment">
+
+    <fragment
+        android:id="@+id/terminalFragment"
+        android:name="com.rexbot.bitrtix.bot.ui.terminal.TerminalFragment"
+        tools:layout="@layout/fragment_terminal"
+        android:label="TerminalFragment" />
+    <fragment
+        android:id="@+id/accountFragment"
+        tools:layout="@layout/fragment_account"
+        android:name="com.rexbot.bitrtix.bot.ui.account.AccountFragment"
+        android:label="AccountFragment" />
+</navigation>

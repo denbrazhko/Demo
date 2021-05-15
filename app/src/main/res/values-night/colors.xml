@@ -20,6 +20,11 @@
     <color name="gray_text_color">#B0B0B0</color>
     <color name="gray_text_color_pressed">#CCB0B0B0</color>
 
+
+    <color name="bottom_nav_checked">#469FFF</color>
+    <color name="bottom_nav_unchecked">#3D4553</color>
+    <color name="bottom_nav_background">#14181F</color>
+
     <color name="green_start">#1DDE7D</color>
     <color name="green_end">#72DFC5</color>
     <color name="green_start_pressed">#149856</color>

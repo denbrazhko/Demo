@@ -45,7 +45,7 @@
     <string name="open_terminal">Войти в терминал</string>
     <string name="without_reg">Без регистрации</string>
 
-<!--    reg-->
+    <!--    reg-->
     <string name="create_acc">Создайте аккаунт</string>
     <string name="please_fill_form">Пожалуйста, заполните форму ниже</string>
     <string name="confirm_pass">Подтверждение пароля</string>
@@ -55,6 +55,12 @@
     <string name="have_acc">Уже есть аккаунт?</string>
     <string name="enter_reg">Войдите</string>
     <string name="register">Зарегестрироваться</string>
+
+    <!--    menu-->
+    <string name="terminal">Терминал</string>
+    <string name="bots">Боты</string>
+    <string name="orders">Ордера</string>
+    <string name="account">Аккаунт</string>
 
 
 </resources>
