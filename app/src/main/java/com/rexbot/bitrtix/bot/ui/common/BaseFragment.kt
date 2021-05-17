@@ -5,13 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 
 
-abstract class BaseFragment<B : ViewBinding> : Fragment() {
+abstract class BaseFragment<B : ViewBinding, VM : ViewModel> : Fragment() {
 
     private var _binding: B? = null
     val binding get() = _binding!!
+
+    lateinit var viewModel: VM
 
 
     override fun onCreateView(
@@ -20,6 +24,7 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = getViewBinding()
+        viewModel = ViewModelProvider(requireActivity()).get(getViewModelClass())
         return binding.root
     }
 
@@ -29,5 +34,8 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
     }
 
     abstract fun getViewBinding(): B
+    abstract fun init()
+    abstract fun initObservers()
+    abstract fun getViewModelClass(): Class<VM>
 
 }

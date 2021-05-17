@@ -10,6 +10,9 @@
 
     <color name="blue_but_color">#1082FF</color>
     <color name="blue_but_color_pressed">#0077FA</color>
+    <color name="blue_but_disabled">#CC1082FF</color>
+
+    <color name="red_stroke_color">#EE6855</color>
     
     <color name="gray_edit_text_color">#E0E0E0</color>
     <color name="gray_hint_color">#787878</color>
@@ -19,8 +22,13 @@
     <color name="gray_text_color_pressed">#CC000000</color>
 
     <color name="bottom_nav_checked">#469FFF</color>
-    <color name="bottom_nav_unchecked">#3D4553</color>
-    <color name="bottom_nav_background">#9C9595</color>
+    <color name="bottom_nav_unchecked">#AAAAAA</color>
+    <color name="bottom_nav_background">#F5F5F5</color>
+
+    <color name="light_gray">#EAEFF8</color>
+    <color name="light_gray_pressed">#CCEAEFF8</color>
+
+    <color name="user_icon_background_color">@color/white</color>
 
     <color name="green_start">#1DDE7D</color>
     <color name="green_end">#72DFC5</color>

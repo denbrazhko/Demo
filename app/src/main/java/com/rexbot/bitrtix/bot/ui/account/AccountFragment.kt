@@ -7,16 +7,24 @@ import android.view.ViewGroup
 import com.rexbot.bitrtix.bot.databinding.FragmentAccountBinding
 import com.rexbot.bitrtix.bot.ui.common.BaseFragment
 
-class AccountFragment : BaseFragment<FragmentAccountBinding>() {
+class AccountFragment : BaseFragment<FragmentAccountBinding, AccountViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+    override fun getViewModelClass(): Class<AccountViewModel> = AccountViewModel::class.java
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
+        initObservers()
     }
 
+    override fun init() {
+        binding.cvUserIcon.setCardBackgroundColor(ResourcesUtils.getRandomColor())
+        binding.tvUserIcon.text = viewModel.getUsernameFirstLetter()
+        binding.tvUsername.text = viewModel.getUsername()
+    }
+
+    override fun initObservers() {
+    }
 
 
     override fun getViewBinding(): FragmentAccountBinding =

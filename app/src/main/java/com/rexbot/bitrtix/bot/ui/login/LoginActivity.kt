@@ -47,7 +47,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
     override fun initObservers() {
         binding.btnSignIn.setOnClickListener {
             viewModel.signIn(
-                binding.etUsername.text.toString(),
+                binding.etUsername.text.toString().trim(),
                 binding.etPass.text
             )
         }
@@ -74,6 +74,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
                     if (it?.tokenResult?.isNotEmpty() == true) {
                         v.isChecked = true
                         v.isEnabled = false
+                        validateFields()
                     }
                 }
                 .addOnFailureListener {
@@ -122,9 +123,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
 
         override fun afterTextChanged(s: Editable?) {
-            binding.btnSignIn.isEnabled = binding.etPass.text.isNotEmpty() &&
-                    binding.etUsername.text.toString().isNotEmpty() &&
-                    binding.cbRecaptcha.isChecked
+           validateFields()
         }
     }
 

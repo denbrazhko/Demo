@@ -44,6 +44,7 @@
     <string name="reg">Зарегестрируйтесь</string>
     <string name="open_terminal">Войти в терминал</string>
     <string name="without_reg">Без регистрации</string>
+    <string name="email_not_verified">Пожалуйста, пройдите верификацию e-mail</string>
 
     <!--    reg-->
     <string name="create_acc">Создайте аккаунт</string>
@@ -61,6 +62,12 @@
     <string name="bots">Боты</string>
     <string name="orders">Ордера</string>
     <string name="account">Аккаунт</string>
+
+    <!--    account-->
+    <string name="exchange_accounts">Акканты биржы</string>
+    <string name="balance">Баланс</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="exit">Выйти</string>
 
 
 </resources>

@@ -1,6 +1,7 @@
 package com.rexbot.bitrtix.bot.ui.views
 
 import android.content.Context
+import android.text.Editable
 import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
@@ -70,7 +71,23 @@ class PasswordEdittext @JvmOverloads constructor(
         isHidden = !isHidden
     }
 
-    val isValid = text.isNotEmpty() && text.length >= 8
+    private val textWatcher =
+        object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) =
+                Unit
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
+
+            override fun afterTextChanged(s: Editable?) {
+                binding.etPass.isActivated = !isValid
+            }
+        }
+
+    init {
+        binding.etPass.addTextChangedListener(textWatcher)
+    }
+
+    val isValid get() = text.isNotEmpty() && text.length >= 8
 
 
     companion object {

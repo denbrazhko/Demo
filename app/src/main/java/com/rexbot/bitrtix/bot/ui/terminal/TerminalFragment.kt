@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import com.rexbot.bitrtix.bot.databinding.FragmentTerminalBinding
 import com.rexbot.bitrtix.bot.ui.common.BaseFragment
 
-class TerminalFragment:BaseFragment<FragmentTerminalBinding>() {
+class TerminalFragment:BaseFragment<FragmentTerminalBinding, TerminalViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+    override fun getViewModelClass(): Class<TerminalViewModel> = TerminalViewModel::class.java
 
 
     override fun getViewBinding(): FragmentTerminalBinding =
         FragmentTerminalBinding.inflate(layoutInflater)
+
+    override fun init() {
+        TODO("Not yet implemented")
+    }
+
+    override fun initObservers() {
+        TODO("Not yet implemented")
+    }
 }

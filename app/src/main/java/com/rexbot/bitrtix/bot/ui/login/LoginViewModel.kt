@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
+import com.rexbot.bitrtix.bot.App
+import com.rexbot.bitrtix.bot.R
 import com.rexbot.bitrtix.bot.repositories.PrefsRepository
 import com.rexbot.bitrtix.bot.repositories.UserRepository
 import com.rexbot.bitrtix.bot.network.helpers.UserApiHelper
@@ -23,23 +25,25 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun signIn(
-            username: String,
-            pass: String
+        username: String,
+        pass: String
     ) {
         liveData(Dispatchers.IO) {
             emit(Resource.loading(null))
             var data: SignInResponseModel? = null
             try {
                 data = userRepository.signIn(username, pass)
-                if(data.result == "error")
+                if (data.result == "error")
                     throw Exception(data.error)
+                if (!data.activated)
+                    throw Exception(App.instance.getString(R.string.email_not_verified))
                 saveCreds(username)
                 emit(Resource.success(data))
             } catch (e: Exception) {
                 val error =
-                        if (data != null && data.error.isNotEmpty())
-                            data.error
-                        else e.message
+                    if (data != null && data.error.isNotEmpty())
+                        data.error
+                    else e.message
                 emit(Resource.error(data, error))
             }
         }.observeForever { signInLiveData.postValue(it) }

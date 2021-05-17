@@ -24,11 +24,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_API_URL", "\"http://46.173.219.3/bittrex/\""
+            buildConfigField "String", "BASE_API_URL", "\"https://botrex.tech/\""
             buildConfigField "String", "RECAPTCHA_KEY", "\"6LdQu84aAAAAAFO7iiT7arJbLCPDqQ6yPjRAygz8\""
         }
         debug{
-            buildConfigField "String", "BASE_API_URL", "\"http://46.173.219.3/bittrex/\""
+            buildConfigField "String", "BASE_API_URL", "\"https://botrex.tech/\""
             buildConfigField "String", "RECAPTCHA_KEY", "\"6LdQu84aAAAAAFO7iiT7arJbLCPDqQ6yPjRAygz8\""
         }
     }
@@ -67,5 +67,8 @@ dependencies {
 //    navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+
+//    charts
+    implementation 'com.tradingview:lightweightcharts:3.3.1'
 
 }

@@ -1,12 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="?colorPrimary"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?colorPrimary">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="ACCOUNT" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvUserIcon"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            app:cardBackgroundColor="@color/user_icon_background_color"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivUserIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="7dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvUserIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/base_text_color"
+                android:textSize="22sp"
+                tools:text="A" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/cvUserIcon"
+            app:layout_constraintStart_toEndOf="@id/cvUserIcon"
+            app:layout_constraintTop_toTopOf="@id/cvUserIcon"
+            tools:text="Username" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvEdit"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/light_gray"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="@id/cvUserIcon"
+            app:layout_constraintEnd_toStartOf="@+id/ivThemeSwitcher"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvUsername"
+            app:layout_constraintTop_toTopOf="@id/cvUserIcon">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                app:srcCompat="@drawable/ic_edit" />
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivThemeSwitcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/selector_theme_switcher" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.12"
+            android:background="@color/base_text_color" />
+
+        <FrameLayout
+            android:id="@+id/btnApiKeys"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:text="@string/exchange_accounts"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                app:srcCompat="@drawable/ic_arrow_right" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.12"
+            android:background="@color/base_text_color" />
+
+        <FrameLayout
+            android:id="@+id/btnBalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:text="@string/balance"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|end"
+                app:srcCompat="@drawable/ic_arrow_right" />
+        </FrameLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:alpha="0.12"
+            android:background="@color/base_text_color" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnExit"
+            style="@style/Base.TextAppearance.AppCompat.Button.LightGrayButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:minHeight="56dp"
+            android:text="@string/exit" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

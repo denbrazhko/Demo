@@ -11,6 +11,9 @@
 
     <color name="blue_but_color">#1082FF</color>
     <color name="blue_but_color_pressed">#0077FA</color>
+    <color name="blue_but_disabled">#CC1082FF</color>
+
+    <color name="red_stroke_color">#EE6855</color>
 
     <color name="gray_edit_text_color">#212A38</color>
     <color name="gray_hint_color">#6BFFFFFF</color>
@@ -24,6 +27,13 @@
     <color name="bottom_nav_checked">#469FFF</color>
     <color name="bottom_nav_unchecked">#3D4553</color>
     <color name="bottom_nav_background">#14181F</color>
+
+
+    <color name="light_gray">#181D25</color>
+    <color name="light_gray_pressed">#CC181D25</color>
+
+
+    <color name="user_icon_background_color">@color/black</color>
 
     <color name="green_start">#1DDE7D</color>
     <color name="green_end">#72DFC5</color>
