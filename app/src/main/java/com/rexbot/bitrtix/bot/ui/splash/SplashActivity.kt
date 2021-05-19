@@ -10,6 +10,7 @@ import com.rexbot.bitrtix.bot.ui.login.LoginActivity
 import com.rexbot.bitrtix.bot.ui.splash.SplashActivityViewModel.Companion.TAG
 import com.rexbot.bitrtix.bot.databinding.ActivitySplashBinding
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
+import com.rexbot.bitrtix.bot.ui.common.Themes
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
@@ -18,7 +19,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i(TAG, "onCreate: ")
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        setDefaultTheme()
         init()
         initObservers()
 //        viewModel.startTimer()

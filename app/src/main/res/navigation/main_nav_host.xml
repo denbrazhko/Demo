@@ -9,7 +9,17 @@
         android:id="@+id/terminalFragment"
         android:name="com.rexbot.bitrtix.bot.ui.terminal.TerminalFragment"
         tools:layout="@layout/fragment_terminal"
-        android:label="TerminalFragment" />
+        android:label="TerminalFragment">
+        <action
+            android:id="@+id/action_terminal_to_choose_currency"
+            app:destination="@id/chooseCurrencyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chooseCurrencyFragment"
+        android:name="com.rexbot.bitrtix.bot.ui.terminal.ChooseCurrencyFragment"
+        tools:layout="@layout/fragment_choose_currency"
+        android:label="ChooseCurrency" />
     <fragment
         android:id="@+id/accountFragment"
         tools:layout="@layout/fragment_account"

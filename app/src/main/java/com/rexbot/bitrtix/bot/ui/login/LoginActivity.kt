@@ -32,7 +32,6 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         init()
         initObservers()
     }

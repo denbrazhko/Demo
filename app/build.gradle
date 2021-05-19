@@ -25,10 +25,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", "\"https://botrex.tech/\""
+            buildConfigField "String", "BASE_BITREX_URL", "\"https://api.bittrex.com/api/v1.1/\""
             buildConfigField "String", "RECAPTCHA_KEY", "\"6LdQu84aAAAAAFO7iiT7arJbLCPDqQ6yPjRAygz8\""
         }
         debug{
             buildConfigField "String", "BASE_API_URL", "\"https://botrex.tech/\""
+            buildConfigField "String", "BASE_BITREX_URL", "\"https://api.bittrex.com/api/v1.1/\""
             buildConfigField "String", "RECAPTCHA_KEY", "\"6LdQu84aAAAAAFO7iiT7arJbLCPDqQ6yPjRAygz8\""
         }
     }

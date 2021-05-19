@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rexbot.bitrtix.bot.databinding.FragmentAccountBinding
+import com.rexbot.bitrtix.bot.ui.common.BaseActivity
 import com.rexbot.bitrtix.bot.ui.common.BaseFragment
 
 class AccountFragment : BaseFragment<FragmentAccountBinding, AccountViewModel>() {
@@ -21,6 +22,9 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountViewModel>()
         binding.cvUserIcon.setCardBackgroundColor(ResourcesUtils.getRandomColor())
         binding.tvUserIcon.text = viewModel.getUsernameFirstLetter()
         binding.tvUsername.text = viewModel.getUsername()
+        binding.ivThemeSwitcher.setOnClickListener {
+            (requireActivity() as BaseActivity<*>).changeTheme()
+        }
     }
 
     override fun initObservers() {
