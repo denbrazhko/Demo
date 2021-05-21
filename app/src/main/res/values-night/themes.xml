@@ -7,13 +7,9 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="android:statusBarColor">?colorPrimaryDark</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="android:autofilledHighlight">@android:color/transparent</item>
+        <item name="android:autofilledHighlight" tools:targetApi="o">@android:color/transparent</item>
         <item name="android:textViewStyle">@style/TextAppearance.AppCompat.Base</item>
     </style>
 
-    <style name="TextAppearance.AppCompat.Base" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/base_text_color</item>
-        <item name="fontFamily">@font/sf_pro</item>
-    </style>
+
 </resources>
