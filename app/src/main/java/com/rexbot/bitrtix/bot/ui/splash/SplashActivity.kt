@@ -11,6 +11,7 @@ import com.rexbot.bitrtix.bot.ui.splash.SplashActivityViewModel.Companion.TAG
 import com.rexbot.bitrtix.bot.databinding.ActivitySplashBinding
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
 import com.rexbot.bitrtix.bot.ui.common.Themes
+import com.rexbot.bitrtix.bot.ui.main.MainActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
@@ -21,6 +22,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         Log.i(TAG, "onCreate: ")
         setDefaultTheme()
         init()
+        if (!viewModel.isAuthNeed) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
         initObservers()
 //        viewModel.startTimer()
     }
@@ -33,14 +39,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     private fun launchNextActivity() {
-        // TODO: 09.05.2021 implement timer here. Change UserRepository constructor
-        Log.i(TAG, "launchNextActivity: ${PrefsRepository(this).getCreds()}")
-        val intent: Intent? =
-//            if (PrefsRepository(this).getCreds() == null)
-            Intent(this, LoginActivity::class.java)
-//            else
-//                null
-        intent ?: return
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

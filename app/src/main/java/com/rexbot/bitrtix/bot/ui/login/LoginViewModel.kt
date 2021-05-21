@@ -18,7 +18,6 @@ import java.lang.Exception
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepository = UserRepository(UserApiHelper(RetrofitBuilder.userApi))
-    private val prefsRepository = PrefsRepository(getApplication())
 
 
     val signInLiveData: MutableLiveData<Resource<SignInResponseModel>> = MutableLiveData()
@@ -49,10 +48,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         }.observeForever { signInLiveData.postValue(it) }
     }
 
-    fun getCreds() = prefsRepository.getCreds()
+    fun getCreds() = userRepository.getUsername()
 
     private fun saveCreds(username: String) {
-        prefsRepository.saveCreds(username)
+        userRepository.successLogin(username)
     }
 
 }

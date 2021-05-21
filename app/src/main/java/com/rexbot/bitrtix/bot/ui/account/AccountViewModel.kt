@@ -31,6 +31,10 @@ class AccountViewModel(application: Application) : AndroidViewModel(application)
         keysLiveData.value = getKeysList()
     }
 
+    fun logout(){
+        userRepository.logout()
+    }
+
     fun getKeysList() = apiKeysRepository.getMutableListOfKeys()
 
 

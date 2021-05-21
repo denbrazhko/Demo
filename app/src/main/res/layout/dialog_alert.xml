@@ -23,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="42dp"
-                android:minWidth="51dp"
-                android:minHeight="51dp"
+                android:maxHeight="51dp"
+                android:maxWidth="51dp"
                 app:srcCompat="@drawable/ic_alert_ok" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/selector_alert_dialog_btn"
-                android:paddingHorizontal="16dp"
+                android:paddingHorizontal="44dp"
                 android:paddingVertical="10dp"
                 android:text="@string/ok"
                 android:textColor="@color/base_text_color" />
@@ -68,7 +68,7 @@
                 android:id="@+id/btnSecondary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="42dp"
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/re_send"

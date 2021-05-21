@@ -4,6 +4,9 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.rexbot.bitrtix.bot.entities.User
+import com.rexbot.bitrtix.bot.repositories.PrefsRepository
+import com.rexbot.bitrtix.bot.repositories.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -13,6 +16,7 @@ class SplashActivityViewModel(application: Application) : AndroidViewModel(appli
 
 
     val timerLiveData: MutableLiveData<Unit> = MutableLiveData()
+    private val userRepository = UserRepository()
 
 
     fun startTimer() {
@@ -23,6 +27,8 @@ class SplashActivityViewModel(application: Application) : AndroidViewModel(appli
             timerLiveData.postValue(Unit)
         }
     }
+
+    val  isAuthNeed get() = userRepository.checkReAuthNeed()
 
     companion object {
         const val TAG = "SPLASH_TAG"

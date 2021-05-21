@@ -1,5 +1,6 @@
 package com.rexbot.bitrtix.bot.ui.account
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import com.rexbot.bitrtix.bot.databinding.FragmentAccountBinding
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
 import com.rexbot.bitrtix.bot.ui.common.BaseFragment
+import com.rexbot.bitrtix.bot.ui.login.LoginActivity
 
 class AccountFragment : BaseFragment<FragmentAccountBinding, AccountViewModel>() {
 
@@ -28,6 +30,12 @@ class AccountFragment : BaseFragment<FragmentAccountBinding, AccountViewModel>()
     }
 
     override fun initObservers() {
+        binding.btnExit.setOnClickListener { logout() }
+    }
+
+    private fun logout() {
+        requireActivity().startActivity(Intent(requireContext(), LoginActivity::class.java))
+        requireActivity().finish()
     }
 
 
