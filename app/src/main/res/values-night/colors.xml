@@ -29,6 +29,12 @@
     <color name="bottom_nav_background">#14181F</color>
 
 
+    <color name="alert_dialog_btn_bg_pressed">#CC1E242F</color>
+    <color name="alert_dialog_btn_bg_normal">#1E242F</color>
+    <color name="alert_dialog_btn_secondary_text_color_normal">#B0B0B0</color>
+    <color name="alert_dialog_btn_secondary_text_color_pressed">#469FFF</color>
+
+
     <color name="light_gray">#181D25</color>
     <color name="light_gray_pressed">#CC181D25</color>
 

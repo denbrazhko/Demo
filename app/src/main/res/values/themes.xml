@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="android:statusBarColor">?colorPrimaryDark</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
         <item name="android:textViewStyle">@style/TextAppearance.AppCompat.Base</item>
     </style>
 
@@ -14,7 +15,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    
+
     <style name="TextAppearance.AppCompat.Base" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/base_text_color</item>
@@ -25,6 +26,19 @@
 
     <style name="Theme.BitrixBot.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AlertDialog.AppCompat.Floating" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:textViewStyle">@style/TextAppearance.AppCompat.Base</item>
+    </style>
+
+    <style name="DialogAnimationAlpha">
+        <item name="android:windowEnterAnimation">@anim/alpha_animation_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_animation_out</item>
+    </style>
 
     <style name="TextAppearance.AppCompat.Gray">
         <item name="android:gravity">center</item>
@@ -59,6 +73,7 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">24dp</item>
     </style>
+
     <style name="TextAppearance.AppCompat.EditTextTitle">
         <item name="android:textColor">@color/base_text_color</item>
         <item name="android:layout_marginStart">8dp</item>

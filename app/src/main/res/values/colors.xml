@@ -25,6 +25,11 @@
     <color name="bottom_nav_unchecked">#AAAAAA</color>
     <color name="bottom_nav_background">#F5F5F5</color>
 
+    <color name="alert_dialog_btn_bg_pressed">#CC1E242F</color>
+    <color name="alert_dialog_btn_bg_normal">#1E242F</color>
+    <color name="alert_dialog_btn_secondary_text_color_normal">#B0B0B0</color>
+    <color name="alert_dialog_btn_secondary_text_color_pressed">#469FFF</color>
+
     <color name="light_gray">#EAEFF8</color>
     <color name="light_gray_pressed">#CCEAEFF8</color>
 

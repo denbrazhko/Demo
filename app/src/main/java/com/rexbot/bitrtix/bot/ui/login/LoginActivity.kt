@@ -18,10 +18,12 @@ import com.google.android.gms.common.util.concurrent.HandlerExecutor
 import com.google.android.gms.safetynet.SafetyNet
 import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
 import com.rexbot.bitrtix.bot.BuildConfig
+import com.rexbot.bitrtix.bot.R
 import com.rexbot.bitrtix.bot.ui.signup.SignUpActivity
 import com.rexbot.bitrtix.bot.databinding.AcitivtyLoginBinding
 import com.rexbot.bitrtix.bot.network.RequestStatus
 import com.rexbot.bitrtix.bot.network.Resource
+import com.rexbot.bitrtix.bot.ui.alert.DialogAlert
 import com.rexbot.bitrtix.bot.ui.common.BaseActivity
 import com.rexbot.bitrtix.bot.ui.main.MainActivity
 
@@ -100,7 +102,10 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
                 }
                 RequestStatus.ERROR -> {
                     binding.progress.root.visibility = GONE
-                    errorSignIn(it.message ?: "505")
+                    if (it.data?.activated == false) {
+                        showNotVerifiedDialog()
+                    } else
+                        errorSignIn(it.message ?: "505")
                 }
             }
         }
@@ -110,6 +115,28 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
+
+    private fun showNotVerifiedDialog() {
+        DialogAlert(
+            this,
+            title = getString(R.string.error),
+            isError = true,
+            description = getString(R.string.email_not_verified),
+            secondaryBtnText = getString(R.string.re_send),
+            onClickListener = notVerifiedDialogOnClickListener
+        ).show()
+    }
+
+    private val notVerifiedDialogOnClickListener =
+        object : DialogAlert.DialogAlertOnClickListener {
+            override fun onPrimaryClick() {
+                Toast.makeText(this@LoginActivity, "onPrimaryClick", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onSecondaryClick() {
+                Toast.makeText(this@LoginActivity, "onSecondaryClick", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     private fun errorSignIn(error: String) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
@@ -122,7 +149,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
 
         override fun afterTextChanged(s: Editable?) {
-           validateFields()
+            validateFields()
         }
     }
 

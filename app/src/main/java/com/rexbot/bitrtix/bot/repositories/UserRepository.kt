@@ -4,6 +4,9 @@ import com.rexbot.bitrtix.bot.App
 import com.rexbot.bitrtix.bot.network.helpers.UserApiHelper
 import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
 import com.rexbot.bitrtix.bot.network.models.SignupResponseModel
+import java.sql.Time
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 class UserRepository(
     private val apiHelper: UserApiHelper,
@@ -22,5 +25,19 @@ class UserRepository(
         else "A"
     }
 
+    fun logout() {
+        prefsRepository.saveCreds("")
+    }
+
+    fun checkReAuthNeed(): Boolean {
+        val last = prefsRepository.getLastAuthTime()
+        val current = System.currentTimeMillis()
+        return current - last >= TIME_TO_RE_AUTH
+    }
+
     fun getUsername() = prefsRepository.getCreds()
+
+    companion object {
+        private val TIME_TO_RE_AUTH = TimeUnit.DAYS.toMillis(7)
+    }
 }

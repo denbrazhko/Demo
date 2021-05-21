@@ -44,7 +44,9 @@
     <string name="reg">Зарегестрируйтесь</string>
     <string name="open_terminal">Войти в терминал</string>
     <string name="without_reg">Без регистрации</string>
-    <string name="email_not_verified">Пожалуйста, пройдите верификацию e-mail</string>
+    <string name="email_not_verified">Пожалуйста, пройдите верификацию e-mail.
+        На вашу почту было отправлено письмо с подтверждением.</string>
+    <string name="re_send">Отправить повторно</string>
 
     <!--    reg-->
     <string name="create_acc">Создайте аккаунт</string>
@@ -69,5 +71,9 @@
     <string name="personal_data">Личные данные</string>
     <string name="exit">Выйти</string>
 
+    <!--    dialog-->
+    <string name="error">Ошибка</string>
+    <string name="ok">OK</string>
+    <string name="something_wrong">Упс. Что-то пошло не так.</string>
 
 </resources>

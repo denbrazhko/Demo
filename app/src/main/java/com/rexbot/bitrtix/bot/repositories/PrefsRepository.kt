@@ -21,10 +21,17 @@ class PrefsRepository(context: Context) {
         prefs.edit().putString(THEME_PREFS, theme.toString()).apply()
     }
 
+    fun getLastAuthTime() = prefs.getLong(LAST_AUTH_TIME, System.currentTimeMillis())
+
+    fun saveLastAuthTime(){
+        prefs.edit().putLong(LAST_AUTH_TIME, System.currentTimeMillis()).apply()
+    }
+
     companion object {
         private const val PREFS_NAME = "BITRIX_BOT_PREFS"
         private const val USER_PREFS = "USERNAME_P"
         private const val THEME_PREFS = "THEME_P"
+        private const val LAST_AUTH_TIME = "LAST_AUTH_TIME"
 
     }
 
