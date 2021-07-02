@@ -8,19 +8,21 @@ import com.rexbot.bitrtix.bot.utils.CryptAES
 class UserApiHelper(private val userApi: UserApi) {
 
     suspend fun signIn(
-            userName: String,
-            password: String
+        userName: String,
+        password: String,
+        captcha: String
     ): SignInResponseModel {
 
-        val encodedPass =   CryptAES().encrypt(password)
-        return userApi.signIn(userName, encodedPass)
+        val encodedPass = CryptAES().encrypt(password)
+        return userApi.signIn(email = userName, password = encodedPass, captcha = captcha)
     }
 
     suspend fun signUp(
-            userName: String,
-            password: String
+        userName: String,
+        password: String,
+        captcha: String
     ): SignupResponseModel {
         val encodedPass = CryptAES().encrypt(password)
-        return userApi.signUp(userName, encodedPass)
+        return userApi.signUp(email = userName, password = encodedPass, captcha = captcha)
     }
 }

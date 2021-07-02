@@ -2,20 +2,27 @@ package com.rexbot.bitrtix.bot.network.api
 
 import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
 import com.rexbot.bitrtix.bot.network.models.SignupResponseModel
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
+import java.lang.invoke.CallSite
 
 interface UserApi {
 
-    @GET("reg.php")
+    @POST("user/auth")
+    @FormUrlEncoded
+    suspend fun signIn(
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("captcha") captcha: String
+    ): SignInResponseModel
+
+    @PUT("user/newuser")
+    @FormUrlEncoded
     suspend fun signUp(
-        @Query("email") email: String,
-        @Query("pass") password: String
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("site") site: String = "botrex",
+        @Field("captcha") captcha: String
     ): SignupResponseModel
 
-    @GET("login.php")
-    suspend fun signIn(
-        @Query("email") email: String,
-        @Query("pass") password: String
-    ): SignInResponseModel
+
 }

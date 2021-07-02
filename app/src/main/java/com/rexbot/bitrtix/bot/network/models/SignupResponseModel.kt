@@ -3,10 +3,10 @@ package com.rexbot.bitrtix.bot.network.models
 import com.google.gson.annotations.SerializedName
 
 data class SignupResponseModel(
-        @SerializedName("result")
-        val result: String,
-        @SerializedName("error")
-        val error: String,
-        @SerializedName("data")
-        val data: String
+    @SerializedName("UID")
+    val UID: String,
+    @SerializedName("error")
+    val error: String,
+    @SerializedName("id")
+    val id: Long
 )

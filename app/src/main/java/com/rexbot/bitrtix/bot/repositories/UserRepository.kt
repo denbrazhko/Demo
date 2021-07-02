@@ -14,11 +14,11 @@ class UserRepository(
     private val apiHelper: UserApiHelper = UserApiHelper(RetrofitBuilder.userApi),
     private val prefsRepository: PrefsRepository = PrefsRepository(App.instance)
 ) {
-    suspend fun signIn(user: String, pass: String): SignInResponseModel =
-        apiHelper.signIn(user, pass)
+    suspend fun signIn(user: String, pass: String, captcha: String): SignInResponseModel =
+        apiHelper.signIn(user, pass, captcha)
 
-    suspend fun signUp(user: String, pass: String): SignupResponseModel =
-        apiHelper.signUp(user, pass)
+    suspend fun signUp(user: String, pass: String, captcha: String): SignupResponseModel =
+        apiHelper.signUp(user, pass, captcha)
 
     fun getUsernameFirstLetter(): String {
         val username = prefsRepository.getCreds() ?: ""
@@ -27,8 +27,10 @@ class UserRepository(
         else "A"
     }
 
+    fun getBearerToken() = prefsRepository.getBearer()
+
     fun logout() {
-        prefsRepository.saveCreds("")
+        prefsRepository.saveCreds("", "")
     }
 
     fun checkReAuthNeed(): Boolean {
@@ -38,8 +40,8 @@ class UserRepository(
         return current - last >= TIME_TO_RE_AUTH
     }
 
-    fun successLogin(username:String){
-        prefsRepository.saveCreds(username)
+    fun successLogin(username: String, token: String) {
+        prefsRepository.saveCreds(username, token)
         prefsRepository.saveLastAuthTime()
     }
 

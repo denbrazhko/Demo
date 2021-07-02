@@ -26,6 +26,8 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
 
     private lateinit var viewModel: SignupViewModel
 
+    private var captchaToken: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,7 +49,8 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
         binding.btnSignUp.setOnClickListener {
             viewModel.signUp(
                 binding.etUsername.text.toString(),
-                binding.etPass.text
+                binding.etPass.text,
+                captchaToken ?: ""
             )
         }
         binding.btnBack.setOnClickListener { onBackPressed() }
@@ -71,6 +74,8 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
                     if (it?.tokenResult?.isNotEmpty() == true) {
                         v.isChecked = true
                         v.isEnabled = false
+                        captchaToken = it.tokenResult
+                        Log.i(TAG, "recaptchaOnClick: $captchaToken")
                         validateFields()
                     }
                 }
@@ -134,4 +139,8 @@ class SignUpActivity : BaseActivity<AcitivtySignupBinding>() {
 
     override fun getViewBinding(): AcitivtySignupBinding =
         AcitivtySignupBinding.inflate(layoutInflater)
+
+    companion object{
+        const val TAG = "SIGN_UP_TAG"
+    }
 }

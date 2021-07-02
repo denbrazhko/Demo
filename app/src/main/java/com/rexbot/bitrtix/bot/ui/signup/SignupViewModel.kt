@@ -5,13 +5,18 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import com.rexbot.bitrtix.bot.App
+import com.rexbot.bitrtix.bot.R
 import com.rexbot.bitrtix.bot.repositories.PrefsRepository
 import com.rexbot.bitrtix.bot.repositories.UserRepository
 import com.rexbot.bitrtix.bot.network.helpers.UserApiHelper
 import com.rexbot.bitrtix.bot.network.models.SignupResponseModel
 import com.rexbot.bitrtix.bot.network.Resource
 import com.rexbot.bitrtix.bot.network.common.RetrofitBuilder
+import com.rexbot.bitrtix.bot.network.models.SignInResponseModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class SignupViewModel(application: Application) : AndroidViewModel(application) {
@@ -25,27 +30,27 @@ class SignupViewModel(application: Application) : AndroidViewModel(application) 
 
     fun signUp(
         username: String,
-        pass: String
+        pass: String,
+        captcha: String
     ) {
-        liveData(Dispatchers.IO) {
-            emit(Resource.loading(null))
+        viewModelScope.launch(Dispatchers.IO) {
+            signUpLiveData.postValue(Resource.loading(null))
             var data: SignupResponseModel? = null
             try {
-                data = userRepository.signUp(username, pass)
-                if (data.result == "error") {
+                data = userRepository.signUp(username, pass, captcha)
+                if (data.error.isNotEmpty())
                     throw Exception(data.error)
-                }
+
                 saveCreds(username)
-                emit(Resource.success(data))
+                signUpLiveData.postValue(Resource.success(data))
             } catch (e: Exception) {
-                Log.e(TAG, "signUp: ", e)
                 val error =
                     if (data != null && data.error.isNotEmpty())
                         data.error
                     else e.message
-                emit(Resource.error(data, error))
+                signUpLiveData.postValue(Resource.error(data, error))
             }
-        }.observeForever { signUpLiveData.postValue(it) }
+        }
     }
 
 

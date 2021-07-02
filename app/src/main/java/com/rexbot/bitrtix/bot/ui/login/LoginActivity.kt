@@ -31,6 +31,8 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
 
     private lateinit var viewModel: LoginViewModel
 
+    private var recaptchaToken: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,8 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
         binding.btnSignIn.setOnClickListener {
             viewModel.signIn(
                 binding.etUsername.text.toString().trim(),
-                binding.etPass.text
+                binding.etPass.text,
+                recaptchaToken ?: ""
             )
         }
         binding.tvSignUp.setOnClickListener {
@@ -75,6 +78,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
                     if (it?.tokenResult?.isNotEmpty() == true) {
                         v.isChecked = true
                         v.isEnabled = false
+                        recaptchaToken = it.tokenResult
                         validateFields()
                     }
                 }
@@ -102,7 +106,7 @@ class LoginActivity : BaseActivity<AcitivtyLoginBinding>() {
                 }
                 RequestStatus.ERROR -> {
                     binding.progress.root.visibility = GONE
-                    if (it.data?.activated == false) {
+                    if (it.data?.isVerified == false) {
                         showNotVerifiedDialog()
                     } else
                         errorSignIn(it.message ?: "505")

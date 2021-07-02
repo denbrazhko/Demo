@@ -76,4 +76,18 @@
     <string name="ok">OK</string>
     <string name="something_wrong">Упс. Что-то пошло не так.</string>
 
+    <!--    recovery password-->
+    <string name="recovery_title">Забыли пароль</string>
+    <string name="recovery_description">Пожалуйста, введите электронную почту вашего аккаунта</string>
+    <string name="recover">Восстановить</string>
+    <string name="accept_title">Подтверждение кода</string>
+    <string name="accept_description">На вашу почту было отправлено письмо с кодом подтверждения</string>
+    <string name="code">Код</string>
+    <string name="code_hint">Введите код с почты</string>
+    <string name="accept">Подтвердить</string>
+    <string name="create_password_title">Создание пароля</string>
+    <string name="create_password_description">Пожалуйста, придумайте новый пароль для вашего аккаунта</string>
+    <string name="save">Сохранить</string>
+
+
 </resources>

@@ -19,8 +19,9 @@
 
     <style name="TextAppearance.AppCompat.Base" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/base_text_color</item>
-        <item name="fontFamily">@font/sf_pro</item>
+        <item name="android:fontFamily">@font/sf_pro</item>
         <item name="android:lineHeight" tools:targetApi="p">24sp</item>
     </style>
 
